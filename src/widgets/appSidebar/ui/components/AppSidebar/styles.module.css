@@ -1,0 +1,54 @@
+.container {
+  @apply bg-white rounded-lg flex flex-col p-4;
+  width: 250px;
+  max-width: 250px;
+  position: sticky;
+}
+
+.logo {
+  @apply text-xl font-bold bg-blue-500 text-white p-4 rounded-lg;
+}
+
+.items {
+  @apply flex flex-col gap-2 mt-4;
+}
+
+.item {
+  @apply font-bold text-gray-700 p-4 rounded-lg transition-colors duration-200;
+  &:hover {
+    @apply bg-blue-50;
+  }
+}
+
+.logout .item {
+  @apply text-red-600 hover:bg-red-50 hover:text-red-700 w-full block;
+}
+
+.logout {
+  @apply mt-auto pt-4 border-t border-gray-200;
+}
+
+.active {
+  @apply text-blue-500;
+}
+
+.cartItem {
+  @apply flex items-center gap-2 justify-between;
+}
+
+.quantity {
+  @apply bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm;
+  animation: quantityPulse 0.2s ease-out;
+}
+
+@keyframes quantityPulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.4);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

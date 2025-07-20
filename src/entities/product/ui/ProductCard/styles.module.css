@@ -1,0 +1,37 @@
+.card {
+  @apply bg-white rounded-lg p-4 flex flex-col gap-4 border-2 border-transparent transition-all duration-100;
+  min-width: 250px;
+  max-width: 350px;
+  height: 450px;
+  overflow: hidden;
+  &:hover {
+    @apply border-2 border-blue-500 cursor-pointer;
+  }
+}
+
+.card-image {
+  @apply w-full h-48 object-contain flex-shrink-0;
+}
+
+.card-title {
+  @apply text-base font-bold flex-shrink-0;
+}
+
+.card-description {
+  @apply text-sm text-gray-500 flex-1;
+  overflow: hidden;
+  position: relative;
+  mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+}
+
+.card-price {
+  @apply text-lg text-black font-bold;
+}
+
+.card-footer {
+  @apply flex justify-between items-center;
+}
+
+.card-quantity {
+  @apply text-sm text-gray-500;
+}

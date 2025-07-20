@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  max-width: calc(1200px - var(--scrollbar-width, 0px));
+  min-height: 100vh;
+  margin: 0 auto;
+  gap: 1rem;
+  padding: 1rem;
+  position: relative;
+}
+
+.container > *:first-child {
+  position: sticky;
+  top: 1rem;
+  width: 250px;
+  height: calc(100vh - 2rem);
+  z-index: 10;
+  flex-shrink: 0;
+}
+
+.container > *:last-child {
+  flex: 1;
+}

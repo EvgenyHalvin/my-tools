@@ -1,0 +1,31 @@
+.button {
+  @apply bg-blue-500 text-white px-4 py-2 rounded-md cursor-pointer transition-all duration-200 text-lg min-h-[44px] flex items-center justify-center;
+  &:hover {
+    @apply bg-blue-600;
+  }
+  &.secondary {
+    @apply bg-blue-300 text-white px-4 py-2 rounded-md cursor-pointer transition-all duration-200 min-h-[44px] flex items-center justify-center;
+    &:hover {
+      @apply bg-blue-400;
+    }
+  }
+  &.danger {
+    @apply bg-red-400 text-white px-4 py-2 rounded-md cursor-pointer transition-all duration-200 min-h-[44px] flex items-center justify-center;
+    &:hover {
+      @apply bg-red-500;
+    }
+  }
+  &.disabled {
+    @apply bg-gray-200 text-white px-4 py-2 rounded-md cursor-pointer transition-all duration-200 min-h-[44px] flex items-center justify-center;
+    cursor: default;
+  }
+}
+
+.loading {
+  @apply bg-gray-200 text-white px-4 py-2 rounded-md cursor-pointer transition-all duration-200 min-h-[44px] flex items-center justify-center;
+  cursor: default;
+}
+
+.spinner {
+  @apply w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin;
+}
