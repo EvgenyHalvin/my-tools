@@ -51,7 +51,7 @@ watchEffect(() => {
     <div :class="styles.container">
       <div :class="styles.form">
         <h1 :class="styles.title">Войти в аккаунт</h1>
-        <p :class="styles.subtitle">Вы не авторизованы</p>
+        <p :class="styles.subtitle">Вы не авторизованы. Используйте любые данные для входа.</p>
 
         <div v-if="!store.username" :class="styles.inputs">
           <div :class="styles.inputGroup">
