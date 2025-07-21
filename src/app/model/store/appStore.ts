@@ -15,14 +15,23 @@ export type TCredentials = {
 }
 
 export const useAppStore = defineStore('app', () => {
-  const credentials = ref<TCredentials | null>(null)
+  // Попытка загрузить credentials из localStorage при инициализации
+  const savedCredentials = localStorage.getItem('credentials')
+  const initialCredentials = savedCredentials ? JSON.parse(savedCredentials) : null
+  const credentials = ref<TCredentials | null>(initialCredentials)
   const cart = ref<Record<string, TCartPosition>>({})
 
   const cartQuantity = computed(() => Object.values(cart.value).reduce<number>((acc, next) => acc + next.quantity, 0))
   const username = computed(() => credentials.value?.login || '')
 
-  const setCredentials = (values: TCredentials) => { credentials.value = values }
-  const clearCredentials = () => { credentials.value = null }
+  const setCredentials = (values: TCredentials) => {
+    credentials.value = values
+    localStorage.setItem('credentials', JSON.stringify(values))
+  }
+  const clearCredentials = () => {
+    credentials.value = null
+    localStorage.removeItem('credentials')
+  }
 
   const addToCart = (product: Product) => {
     if (cart.value[product.id]) {
@@ -50,6 +59,7 @@ export const useAppStore = defineStore('app', () => {
     cart,
     cartQuantity,
     username,
+    credentials,
     setCredentials,
     clearCredentials,
     addToCart,

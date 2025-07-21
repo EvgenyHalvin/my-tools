@@ -14,10 +14,14 @@ onMounted(async () => {
 })
 
 const store = useAppStore()
+
+const handleCardClick = (product: Product) => {
+  console.log(product)
+}
 </script>
 
 <template>
   <PageTemplate>
-    <ProductsGrid :products="products" @add-to-cart="store.addToCart" />
+    <ProductsGrid :products="products" @add-to-cart="store.addToCart" @card-click="handleCardClick" />
   </PageTemplate>
 </template>

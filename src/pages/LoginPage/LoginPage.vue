@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, watchEffect } from 'vue'
 import { useRouter } from 'vue-router'
 
 import { useAppStore } from '@/app/model'
@@ -24,29 +24,34 @@ const handleSubmit = async () => {
   isLoading.value = true
 
   try {
-    await new Promise((resolve) => setTimeout(resolve, 2000))
+    await new Promise((resolve) => setTimeout(resolve, 500))
 
     store.setCredentials({
       login: login.value,
       password: password.value,
     })
 
-    router.push(navigation.PRODUCTS.path)
+    router.replace(navigation.PRODUCTS.path)
   } catch (error) {
     console.error('Ошибка входа:', error)
   } finally {
     isLoading.value = false
   }
 }
+
+watchEffect(() => {
+  if (store.username) {
+    router.replace(navigation.PRODUCTS.path)
+  }
+})
 </script>
 
 <template>
   <PageTemplate>
     <div :class="styles.container">
       <div :class="styles.form">
-        <h1 :class="styles.title">
-          {{ store.username ? 'Выйти из аккаунта' : 'Войти в аккаунт' }}
-        </h1>
+        <h1 :class="styles.title">Войти в аккаунт</h1>
+        <p :class="styles.subtitle">Вы не авторизованы</p>
 
         <div v-if="!store.username" :class="styles.inputs">
           <div :class="styles.inputGroup">

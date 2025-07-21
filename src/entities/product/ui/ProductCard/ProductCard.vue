@@ -10,11 +10,12 @@ const { product } = defineProps<{
 
 const emit = defineEmits<{
   (e: 'add-to-cart', product: Product): void
+  (e: 'card-click', product: Product): void
 }>()
 </script>
 
 <template>
-  <div :class="styles.card">
+  <div :class="styles.card" @click="emit('card-click', product)">
     <img :class="styles.cardImage" :src="product.link" alt="Product Image" />
     <h1 :class="styles.cardTitle">{{ product.name }}</h1>
     <p :class="styles.cardDescription">{{ product.description }}</p>

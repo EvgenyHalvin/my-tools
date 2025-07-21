@@ -10,6 +10,7 @@ const { products } = defineProps<{
 
 const emit = defineEmits<{
   (e: 'add-to-cart', product: Product): void
+  (e: 'card-click', product: Product): void
 }>()
 </script>
 
@@ -19,6 +20,7 @@ const emit = defineEmits<{
       v-for="product in products"
       :key="product.id"
       :product="product"
+      @card-click="emit('card-click', product)"
       @add-to-cart="emit('add-to-cart', product)"
     />
   </div>

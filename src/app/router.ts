@@ -2,14 +2,17 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 import { navigation } from '@/shared/lib'
 
+import { useAppStore } from './model'
+
+
 const router = createRouter({
   history: createWebHistory(),
   routes: [
-    // {
-    //   path: navigation.LOGIN.path,
-    //   component: () => import('@/pages/LoginPage'),
-    //   meta: { replace: true },
-    // },
+    {
+      path: navigation.LOGIN.path,
+      component: () => import('@/pages/LoginPage'),
+      meta: { replace: true },
+    },
     {
       path: '/',
       redirect: '/products',
@@ -38,9 +41,19 @@ const router = createRouter({
     {
       path: '/:pathMatch(.*)*',
       component: () => import('@/pages/NotFoundPage'),
-      meta: { replace: true },
     },
   ],
 })
 
+router.beforeEach((to, from, next) => {
+  const store = useAppStore()
+
+  const isAuth = !!store.username
+
+  if (to.meta.requiresAuth && !isAuth) {
+    next({ path: navigation.LOGIN.path })
+  } else {
+    next()
+  }
+})
 export default router
