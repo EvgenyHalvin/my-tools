@@ -7,7 +7,7 @@ import { EmptyPlug, PageTemplate } from '@/shared/ui/components'
 const router = useRouter()
 
 const navigateTo = (path: string) => {
-  router.push(path)
+  router.replace(path)
 }
 </script>
 
