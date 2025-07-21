@@ -55,6 +55,11 @@ export const useAppStore = defineStore('app', () => {
 
   const clearCart = () => { cart.value = {} }
 
+  const clearStore = () => {
+    clearCredentials()
+    clearCart()
+  }
+
   return {
     cart,
     cartQuantity,
@@ -66,5 +71,6 @@ export const useAppStore = defineStore('app', () => {
     decreaseProductQuantity,
     removeFromCart,
     clearCart,
+    clearStore,
   }
 })

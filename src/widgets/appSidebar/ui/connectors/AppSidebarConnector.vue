@@ -6,7 +6,7 @@ import { AppSidebar } from '../components'
 const store = useAppStore()
 
 const logout = () => {
-  store.clearCredentials()
+  store.clearStore()
 }
 </script>
 
